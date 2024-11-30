@@ -34,9 +34,17 @@ function App() {
   }
 
   const handleRemoveRepo = (id) => {
-    console.log('Removendo registro', id);
-
-    // utilizar filter.
+    const updatedRepos = [];
+    
+    for (let repo of repos) {
+      if (repo.id !== id) {
+        updatedRepos.push(repo);
+      }
+    }
+  
+    setRepos(updatedRepos);
+  };
+  
   }
 
 
@@ -48,6 +56,6 @@ function App() {
       {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
     </Container>
   );
-}
+
 
 export default App;
